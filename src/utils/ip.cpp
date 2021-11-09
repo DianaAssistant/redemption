@@ -9,7 +9,6 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
-
 namespace
 {
     constexpr auto IPV4_MAPPED_IPV6_PREFIX = "::ffff:"_av;

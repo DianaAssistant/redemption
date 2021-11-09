@@ -23,6 +23,11 @@ struct IpPort
         );
     }
 
+    bool is_ipv4_mapped() const noexcept
+    {
+        return _ip_address_offset != 0;
+    }
+
     struct [[nodiscard]] ErrorMessage
     {
         bool has_errror() const noexcept { return error; }

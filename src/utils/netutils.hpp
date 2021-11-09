@@ -67,10 +67,14 @@ unique_fd addr_connect(zstring_view addr, bool no_log_for_unix_socket);
 
 unique_fd addr_connect_blocking(zstring_view addr, bool no_log_for_unix_socket);
 
+bool compare_binary_ipv4(const char *s1, const char *s2);
+bool compare_binary_ipv6(const char *s1, const char *s2);
+
 /// \return ip found or empty view whether not found or error
 zstring_view parse_ip_conntrack(
     int fd, const char * source, const char * dest, int sport, int dport,
-    writable_bytes_view transparent_dest, uint32_t verbose);
+    writable_bytes_view transparent_dest,
+    bool (*ip_compare)(const char *s1, const char *s2), uint32_t verbose);
 
 FILE* popen_conntrack(const char* source_ip, int source_port, int target_port);
 
